@@ -1,0 +1,20 @@
+<div class="search-container">
+    <form class="search-form">
+        <label class="number-label">Input number:</label>
+        <input required
+            class="number-input"
+            placeholder="Phone number"
+            name="numberInput"
+            [(ngModel)]="numberInput"
+        />
+        <label class="country-label">Choose country code:</label>
+        <select class="country-select" name="selectedOption" [(ngModel)]="selectedOption">
+            <option [value]=""> </option>
+            <option *ngFor="let key of keysCC" [value]="key">{{countryCodes[key].country_name}}</option>
+        </select>
+        <button class="search-button" (click)="getInformation()">Search</button>
+    </form>
+</div>
+<div *ngIf="display">
+    <app-result [prop]=numberV></app-result>
+</div>

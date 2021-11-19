@@ -1,0 +1,51 @@
+<div class="principal-contenedor">
+    <div class="correct-number" *ngIf="isValid">
+        <h2>Number validated</h2>
+        <table class='table'>
+            <thead>
+            <tr>
+                <th>Number</th>
+                <th>Local Format</th>
+                <th>Internacional Format</th>
+                <th>Country Prefix</th>
+                <th>Country Code</th>
+                <th>Country</th>
+                <th>City</th>
+                <th>Carrier</th>
+                <th>Line Type</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>{{validation.number}}</td>
+                <td>{{validation.local_format}}</td>
+                <td>{{validation.international_format}}</td>
+                <td>{{validation.country_prefix}}</td>
+                <td>{{validation.country_code}}</td>
+                <td>{{validation.country_name}}</td>
+                <td>{{validation.location}}</td>
+                <td>{{validation.carrier}}</td>
+                <td>{{validation.line_type}}</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="incorrect-number" *ngIf="!isValid">
+        <h2 class="title">Number not valid</h2>
+        <div *ngIf="!isError">
+            <h3 *ngIf="!isPrefix">
+                Given number was invalid<br>
+                Try another phone number 
+            </h3>
+            <h3 *ngIf="isPrefix">
+                Given number was invalid<br>
+                Did you include country prefix in number?
+            </h3>
+        </div>
+        <h3 *ngIf="isError">
+            Error: {{validationError.code}}<br>
+            {{validationError.type}}<br>
+            {{validationError.info}}
+        </h3>
+    </div>
+</div>
